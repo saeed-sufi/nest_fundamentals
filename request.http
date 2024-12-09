@@ -1,0 +1,31 @@
+### Get All
+GET http://localhost:3000/coffees/
+
+
+### Create one
+POST http://localhost:3000/coffees/
+Content-Type: application/json
+
+{
+  "name": "saeed",
+  "brand": "Nike",
+  "flavors": ["hola", "chao"]
+}
+
+### Update one
+PATCH  http://localhost:3000/coffees/1
+Content-Type: application/json
+
+{
+  "name": "saeed"
+}
+
+### Delete one
+DELETE http://localhost:3000/coffees/10
+Content-Type: application/json
+
+{
+  "email": "updateOne@gmail.com",
+  "password": "adfl23"
+}
+

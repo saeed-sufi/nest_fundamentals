@@ -26,6 +26,17 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+- The @Res() decorator gives access to the underlying response object of expressjs (or fastify). However, try not to use it and stick with the nest way of handling responses to stay clear from incomptiblities of nest api and expressjs api.
+- Encapsulate business domains inside a module. For example, a shopping cart has functionalities that are closely related and can be defined inside of a module. 
+- The `@Module()` decoratore provides the metadata that nest uses to organize the structure of the app.
+- DTOs are used to define the interface or shape of the input or output within our system. For example, in a post request we can use a DTO to define the interface or shape we are expecting to recieve for the `body`. This can help us make sure that the post request payload has everything required that we need to run the rest of the code.
+- DTOs are just simple objects. They don't contain any business logic, methods or testing. 
+- A best practice with DTOs is to mark each property with `readonly` to help maintain immulability.
+- Dtos are useful for creating a bit of type safety within our application.
+- Any backend app must validate the correctness of the data being sent to our app. Validating this data is the next important thing and nest uses validation pipes to address this issue.
+- The `PartialType` function inherites all the properties and validation rules from the dto provided as its argument and marks each one of them as optional.
+- 
+
 ## Project setup
 
 ```bash
