@@ -27,7 +27,7 @@ export class CoffeesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.coffeeService.findOne(id);
+    return this.coffeeService.findOne(parseInt(id));
   }
 
   @Post()

@@ -1,37 +1,46 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Coffee } from 'src/entities/coffee.entity';
+import { Repository } from 'typeorm';
+import { CreateCoffeeDto } from './dtos/create-coffee.dto';
 
 @Injectable()
 export class CoffeesService {
-  private coffees: Coffee[] = [
-    {
-      id: 1,
-      name: 'esperso',
-      brand: 'americano',
-      flavors: ['sour', 'sweet'],
-    },
-  ];
+  // private coffeeRepository: Coffee[] = [
+  //   {
+  //     id: 1,
+  //     name: 'esperso',
+  //     brand: 'americano',
+  //     flavors: ['sour', 'sweet'],
+  //   },
+  // ];
+  constructor(
+    @InjectRepository(Coffee)
+    private readonly coffeeRepository: Repository<Coffee>,
+  ) {}
 
   findAll() {
-    return this.coffees;
+    return this.coffeeRepository.find();
   }
 
-  findOne(id: string) {
-    const coffee = this.coffees.find((c) => c.id === +id);
+  async findOne(id: number) {
+    const coffee = await this.coffeeRepository.findOne({ where: { id } });
     if (!coffee) {
       throw new NotFoundException(`Coffee with id ${id} not found.`);
     }
     return coffee;
   }
 
-  createOne(createCoffeeDto: any) {
-    this.coffees.push(createCoffeeDto);
+  async createOne(createCoffeeDto: CreateCoffeeDto) {
+    const coffee = await this.coffeeRepository.create(createCoffeeDto);
+    return this.coffeeRepository.save(coffee);
+    // this.coffeeRepository.push(createCoffeeDto);
   }
 
   remove(id: string) {
-    const coffeeIndex = this.coffees.findIndex((c) => c.id === +id);
+    const coffeeIndex = this.coffeeRepository.findIndex((c) => c.id === +id);
     if (coffeeIndex >= 0) {
-      this.coffees.splice(coffeeIndex, 1);
+      this.coffeeRepository.splice(coffeeIndex, 1);
     }
   }
 

@@ -35,7 +35,9 @@
 - Dtos are useful for creating a bit of type safety within our application.
 - Any backend app must validate the correctness of the data being sent to our app. Validating this data is the next important thing and nest uses validation pipes to address this issue.
 - The `PartialType` function inherites all the properties and validation rules from the dto provided as its argument and marks each one of them as optional.
-- 
+- When using TypeOrm, seeing the following log message indicates that the connection to db is successful: `TypeOrmModule dependencies initialized`.
+- An entity represents the relationship between a typescript class and a database table. In fact, each class marked with the `@Entity()` decorator will create a sql table. The sql table name will be the class name in lowercase. 
+- TypeOrm supports repository design pattern, which means that each entity that we create has its own repository.
 
 ## Project setup
 
