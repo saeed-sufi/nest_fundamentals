@@ -37,18 +37,18 @@ export class CoffeesService {
     // this.coffeeRepository.push(createCoffeeDto);
   }
 
-  remove(id: string) {
-    const coffeeIndex = this.coffeeRepository.findIndex((c) => c.id === +id);
-    if (coffeeIndex >= 0) {
-      this.coffeeRepository.splice(coffeeIndex, 1);
+  async remove(id: number) {
+    const coffeeIndex = await this.coffeeRepository.findOne({ where: { id } });
+    if (coffeeIndex) {
+      // this.coffeeRepository.splice(coffeeIndex, 1);
     }
   }
 
   update(id: string, updateCoffeeDto: any) {
     return updateCoffeeDto;
-    const exists = this.findOne(id);
-    if (exists) {
-      // do sth
-    }
+    // const exists = this.findOne(id);
+    // if (exists) {
+    // do sth
+    // }
   }
 }
