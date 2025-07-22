@@ -37,6 +37,8 @@
 - TypeOrm supports repository design pattern, which means that each entity that we create has its own repository.
 - The main idea of a provider is that it can inject dependencies. It means objects can create various relationship with each other and nest handle the logic of wiring up instances of objects together.
 - Modules are used to encapsulate a closely related set of capabilities.
+- Think of containers as running processes with some added encapsulation applied to it, making it isolated from the host and other containers.
+- Relations are associations between two or more tables based on common fields from each table.
 
 ## Project setup
 
