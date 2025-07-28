@@ -39,6 +39,8 @@
 - Modules are used to encapsulate a closely related set of capabilities.
 - Think of containers as running processes with some added encapsulation applied to it, making it isolated from the host and other containers.
 - Relations are associations between two or more tables based on common fields from each table.
+- Indexes are special lookup tables that database search engine use to speed up data retrieval.
+- Database migration provides a way to incrementally update our database schema and keep it in sync with applications data model all while preserving existing data in our database.
 
 ## Project setup
 
